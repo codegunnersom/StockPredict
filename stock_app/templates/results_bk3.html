@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Prediction Results</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Stock Predictor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/predict">Predict</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>Prediction Results for {{ ticker }}</h2>
+        <div class="card mt-4">
+            <div class="card-header">
+                Prediction Summary
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Predicted Price: ${{ predicted_price|floatformat:2 }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Historical Prices and Forecast</h6>
+                <img src="data:image/png;base64,{{ plot_url }}" class="img-fluid" alt="Stock Price Plot">
+                <h6 class="card-subtitle mb-2 text-muted mt-4">ACF and PACF Plots</h6>
+                <img src="data:image/png;base64,{{ acf_pacf_plot_url }}" class="img-fluid" alt="ACF and PACF Plots">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

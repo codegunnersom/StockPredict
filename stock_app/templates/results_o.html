@@ -1,0 +1,18 @@
+<!-- stock_app/templates/results.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Results</title>
+</head>
+<body>
+    <h1>Prediction Results for {{ ticker }}</h1>
+    <p>Predicted Price: ${{ predicted_price }}</p>
+    
+    <!-- Display the plot -->
+    <h2>Historical Price Chart</h2>
+    <img src="data:image/png;base64,{{ plot_url }}" alt="Stock Price Chart">
+    
+    <a href="{% url 'predict_stock' %}">Make another prediction</a>
+</body>
+</html>
